@@ -23,8 +23,42 @@ const register = async (userData) => {
   }
 };
 
+const getDetail=async(token)=>{
+  try {
+   const response = await axios.get(`${API_URL}/profile`, {
+     headers: {
+       Authorization: `Bearer ${token}`,
+     },
+   });
+   console.log(response.data);
+   return response.data; 
+  } catch (error) {
+    console.error('Error:', error.response);
+    throw error;
+  }
+}
+
+const updateProfile = async (ProfileData,token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const response = await axios.put(`${API_URL}/profile`, ProfileData,config
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error:', error.response);
+    throw error;
+  }
+};
+
 const authService={
  login,
  register,
+ getDetail,
+ updateProfile,
 }
 export default authService

@@ -19,6 +19,8 @@ const Login = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
+  // user contain token 
+  console.log("user",user);
 
   useEffect(() => {
     if (isError) {
