@@ -100,11 +100,11 @@ const handleLogout=()=>{
   return (
     <nav>
       <h2>LOGO</h2>
-      <ul>
+      <div className='header-btn'>
         <MdDelete onClick={handleDeleteUser} />
         <button onClick={handleToggleModal}>Add post</button>
         <button onClick={handleLogout}>Logout</button>
-      </ul>
+      </div>
 
       {/* Modal */}
       {isModalOpen && (
