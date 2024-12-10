@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import BlogCard from "../../component/BlogCard/BlogCard";
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { blogs, loading, error } = useSelector((state) => state.blog); // Access blogs from state
+  const { blogs, loading, error } = useSelector((state) => state.blog); 
 
   useEffect(() => {
    
@@ -26,6 +26,7 @@ const Dashboard = () => {
           {blogs.map((blog) => (
             <BlogCard
               key={blog.id}
+              id={blog._id}
               title={blog.title}
               description={blog.description}
               image={blog.image}

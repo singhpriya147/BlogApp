@@ -29,6 +29,21 @@ export const getUserBlogs = createAsyncThunk(
   }
 );
 
+
+
+export const deleteBlogById = createAsyncThunk(
+  'blogs/deleteBlog',
+  async ( id, { rejectWithValue }) => {
+    try {
+      console.log(id);
+     return  await blogService.deleteBlog(id,token);
+     
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const blogSlice = createSlice({
   name: 'blog',
   initialState: {
@@ -76,6 +91,17 @@ const blogSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(deleteBlogById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteBlogById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.blogs = state.blogs.filter((blog) => blog.id !== action.payload);
+      })
+      .addCase(deleteBlogById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });

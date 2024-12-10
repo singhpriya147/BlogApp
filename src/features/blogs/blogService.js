@@ -15,6 +15,28 @@ const postBlog = async (blogData, token) => {
   return response.data;
 };
 
+
+const deleteBlog = async (id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json', 
+    },
+  };
+
+  const body = {
+    id: id, 
+  };
+
+  console.log(body);
+  const response = await axios.delete(`${API_URL}/blog`, {
+    data: body,
+    ...config,
+  });
+  return response.data; 
+};
+
+
 // Get all blogs of a user
 const getUserBlogs = async ( token) => {
   const config = {
@@ -30,6 +52,7 @@ const getUserBlogs = async ( token) => {
 const blogService = {
   postBlog,
   getUserBlogs,
+  deleteBlog,
 };
 
 export default blogService;
