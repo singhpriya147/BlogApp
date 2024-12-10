@@ -81,6 +81,7 @@ import axios from 'axios';
 // Register user
 const register = async (userData) => {
   const response = await axios.post(`${API_URL}/register`, userData);
+  console.log(response.data);
   if (response.data) {
     localStorage.setItem('user', JSON.stringify(response.data)); // Save user data to localStorage
   }
@@ -90,6 +91,7 @@ const register = async (userData) => {
 // Login user
 const login = async (userData) => {
   const response = await axios.post(`${API_URL}/login`, userData);
+  console.log(response.data);
   if (response.data) {
     localStorage.setItem('user', JSON.stringify(response.data)); // Save user data to localStorage
   }

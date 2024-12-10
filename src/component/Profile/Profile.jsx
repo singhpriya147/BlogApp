@@ -31,7 +31,7 @@ const Profile = () => {
     return () => {
       dispatch(reset());
     };
-  }, [dispatch]);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

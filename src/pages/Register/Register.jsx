@@ -28,10 +28,10 @@ const Register = () => {
     if (isError) {
       alert(message);
     }
-    if (isSuccess || user) {
+    if (isSuccess ) {
       navigate('/');
     }
-    dispatch(reset());
+    // dispatch(reset());
   }, [user, isError, isLoading, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {
