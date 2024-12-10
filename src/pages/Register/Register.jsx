@@ -1,11 +1,8 @@
-
-
 import './Register.css';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { reset, register } from '../../features/auth/authSlice';
-
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +10,7 @@ const Register = () => {
     email: '',
     password: '',
     phoneNumber: '',
-    photo: null, 
+    photo: null,
   });
 
   const { name, email, password, phoneNumber, photo } = formData;
@@ -28,7 +25,8 @@ const Register = () => {
     if (isError) {
       alert(message);
     }
-    if (isSuccess ) {
+    if (isSuccess) {
+      console.log('hello brother');
       navigate('/');
     }
     // dispatch(reset());
@@ -44,7 +42,7 @@ const Register = () => {
   const handleFileChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
-      photo: e.target.files[0], 
+      photo: e.target.files[0],
     }));
   };
 
@@ -56,9 +54,9 @@ const Register = () => {
     userData.append('password', password);
     userData.append('phoneNumber', phoneNumber);
     if (photo) {
-      userData.append('photo', photo); 
+      userData.append('photo', photo);
     }
-    dispatch(register(userData)); 
+    dispatch(register(userData));
   };
 
   return (
@@ -107,11 +105,7 @@ const Register = () => {
           </div>
           <div>
             <h3>Add your profile picture</h3>
-            <input
-              type='file'
-              name='photo'
-              onChange={handleFileChange}
-            />
+            <input type='file' name='photo' onChange={handleFileChange} />
           </div>
           <button type='submit' className='button'>
             Submit

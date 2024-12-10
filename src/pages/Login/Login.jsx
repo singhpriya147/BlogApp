@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, reset } from '../../features/auth/authSlice';
@@ -9,7 +7,7 @@ import './Login.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    username: '', 
+    username: '',
     password: '',
   });
   const { username, password } = formData;
@@ -19,14 +17,15 @@ const Login = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
-  // user contain token 
-  console.log("user",user);
+  // user contain token
+  console.log('user', user);
 
   useEffect(() => {
     if (isError) {
       alert(message);
     }
-    if ( user) {
+
+    if (user?.token) {
       navigate('/dashboard');
     }
 
@@ -52,7 +51,7 @@ const Login = () => {
   };
 
   const fillCredentials = () => {
-    const demoUsername = 'kevin123@gmail.com'; 
+    const demoUsername = 'kevin123@gmail.com';
     const demoPassword = 'kevin123';
     setFormData({
       ...formData,
