@@ -1,0 +1,25 @@
+.container{
+ width: 50%;
+ background-color: aliceblue;
+ padding:2rem ;
+place-items: center;
+margin: 0 auto;
+border-radius: 25px;
+}
+.right-container{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
+ text-align: center;
+}
+.form{
+ width: 70%;
+overflow: hidden;
+padding:1rem;
+margin: 1rem;
+
+}
+.form div{
+ padding: 1rem;
+}

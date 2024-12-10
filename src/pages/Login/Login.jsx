@@ -69,9 +69,7 @@ const Login = () => {
           <p>Please login to your account</p>
         </div>
 
-   
         <form className='form' onSubmit={onSubmit}>
-         
           <div>
             <input
               type='text'
@@ -95,7 +93,7 @@ const Login = () => {
           </div>
           <button
             type='button'
-            style={{ backgroundColor: '#6A0DAD' }}
+            style={{ backgroundColor: '#b678e3' }}
             onClick={fillCredentials}
           >
             Use Demo Credentials
