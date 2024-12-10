@@ -38,7 +38,7 @@ const handleDelete = async () => {
           alt={title}
         />
       </div>
-      <div>
+      <div className='card-footer'>
         <AiOutlineDelete onClick={handleDelete}  />
         <FaRegEdit />
       </div>

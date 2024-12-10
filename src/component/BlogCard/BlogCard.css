@@ -6,10 +6,18 @@
   max-width: 300px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 200px;
+  height: auto;
   width: 500px;
+   background-color: aliceblue;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   gap:2rem
 }
-
+.card-footer{
+  display: flex;
+  gap:2rem;
+}
 .blog-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
