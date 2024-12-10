@@ -52,8 +52,8 @@ const Login = () => {
   };
 
   const fillCredentials = () => {
-    const demoUsername = 'alex123@gmail.com'; 
-    const demoPassword = 'alex123';
+    const demoUsername = 'kevin123@gmail.com'; 
+    const demoPassword = 'kevin123';
     setFormData({
       ...formData,
       username: demoUsername,
