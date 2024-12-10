@@ -8,13 +8,19 @@ import './Dashboard.css'
 import BlogCard from "../../component/BlogCard/BlogCard";
 const Dashboard = () => {
   const dispatch = useDispatch();
+   const { user, isError, isLoading, message } = useSelector(
+     (state) => state.auth
+   );
   const { blogs, loading, error } = useSelector((state) => state.blog); 
 
   useEffect(() => {
-   
-      dispatch(getUserBlogs()); 
+    if (user) {
+      
+       dispatch(getUserBlogs()); 
+    }
+     
     
-  }, [dispatch]);
+  }, []);
   return (
     <div className="dashboard">
       <Header />

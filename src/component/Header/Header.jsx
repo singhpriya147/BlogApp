@@ -21,8 +21,10 @@ const Header = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const token = user?.token;
 
-  const handleDeleteUser = () => {
-    dispatch(deleteUser());
+  const handleDeleteUser = async() => {
+   await  dispatch(deleteUser());
+   alert('user deleted successfully')
+   navigate('/login');
   };
 
   const handleToggleModal = () => {
