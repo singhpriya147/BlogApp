@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { deleteUser } from '../../features/auth/authSlice';
 import { useState } from 'react';
 // import { useSelector } from 'react-redux';
-import { postBlog } from '../../features/blogs/blogSlice';
+import { getUserBlogs, postBlog } from '../../features/blogs/blogSlice';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -78,8 +78,11 @@ const handleSubmit = async (e) => {
   data.append('image', formData.image);
 
   try {
-    await dispatch(postBlog(data)); // Pass token to the action
+    await dispatch(postBlog(data));
+     // Pass token to the action
     setIsModalOpen(false);
+    alert('Blog deleted successfully!');
+    await dispatch(getUserBlogs())
   } catch (error) {
     console.error('Error submitting post:', error);
     alert('Failed to submit post.');

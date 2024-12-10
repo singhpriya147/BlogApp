@@ -86,20 +86,24 @@ const Profile = () => {
 
   return (
     <div>
-      <h1>Profile</h1>
-      {user && (
-        <div>
-          {user.address || user.briefDescription || user.detailedDescription ? (
-            <div>
-              <p>Address: {user.address}</p>
-              <p>Brief Description: {user.briefDescription}</p>
-              <p>Detailed Description: {user.detailedDescription}</p>
-            </div>
-          ) : (
-            <p>NOT set yet</p>
-          )}
-        </div>
-      )}
+      <div className='profile-card'>
+        <h3>Profile Details</h3>
+        {user && (
+          <div>
+            {user.address ||
+            user.briefDescription ||
+            user.detailedDescription ? (
+              <div>
+                <p>Address: {user.address}</p>
+                <p>Brief Description: {user.briefDescription}</p>
+                <p>Detailed Description: {user.detailedDescription}</p>
+              </div>
+            ) : (
+              <p>NOT set yet</p>
+            )}
+          </div>
+        )}
+      </div>
 
       <button onClick={toggleModal}>Add Profile</button>
 

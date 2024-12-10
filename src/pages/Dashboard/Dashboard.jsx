@@ -3,7 +3,7 @@ import Profile from "../../component/Profile/Profile"
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserBlogs } from "../../features/blogs/blogSlice";
 import { useEffect } from "react";
-
+import './Dashboard.css'
 
 import BlogCard from "../../component/BlogCard/BlogCard";
 const Dashboard = () => {
@@ -16,11 +16,11 @@ const Dashboard = () => {
     
   }, [dispatch]);
   return (
-    <div>
+    <div className="dashboard">
       <Header />
-      <h2>This is dashboard page</h2>
+    
       <Profile />
-      <div>
+      <div className="blog-container">
         <h3>Your Blogs:</h3>
         <div className='blog-list'>
           {blogs.map((blog) => (

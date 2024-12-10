@@ -109,15 +109,14 @@ export const updateProfile = createAsyncThunk(
   'auth/updateProfile',
   async (profileData, { rejectWithValue }) => {
     try {
-      // Retrieve and parse the user object from localStorage
+     
       const user = JSON.parse(localStorage.getItem('user'));
 
-      // Check if the user object exists and has a token
+     
       if (!user || !user.token) {
         return rejectWithValue('Token is missing');
       }
 
-      // Pass the profile data and token to the authService
       return await authService.updateProfile(profileData, user.token);
     } catch (error) {
       console.error(error);

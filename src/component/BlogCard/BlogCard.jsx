@@ -18,7 +18,7 @@ const handleDelete = async () => {
    
     await dispatch(deleteBlogById(id));
 
-    
+    // Show alert when delete is successful
     alert('Blog deleted successfully!');
 
  

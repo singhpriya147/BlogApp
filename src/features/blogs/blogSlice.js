@@ -29,7 +29,17 @@ export const getUserBlogs = createAsyncThunk(
   }
 );
 
-
+export const editBlogById = createAsyncThunk(
+  'blogs/editBlog', // Action name
+  async ({ id, updatedData, token }, { rejectWithValue }) => {
+    try {
+      const response = await editBlog(id, updatedData, token);
+      return response; // Return the updated blog data to update the state
+    } catch (error) {
+      return rejectWithValue(error.message); // If error, reject with error message
+    }
+  }
+);
 
 export const deleteBlogById = createAsyncThunk(
   'blogs/deleteBlog',
@@ -102,6 +112,22 @@ const blogSlice = createSlice({
       .addCase(deleteBlogById.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(editBlogById.pending, (state) => {
+        state.loading = true;  // Set loading to true while editing
+        state.error = null;
+      })
+      .addCase(editBlogById.fulfilled, (state, action) => {
+        state.loading = false;  // Set loading to false after success
+        const updatedBlog = action.payload;
+        state.blogs = state.blogs.map(blog =>
+          blog.id === updatedBlog.id ? updatedBlog : blog
+        );  // Replace the old blog with the updated blog in the state
+        state.currentBlog = updatedBlog;  // Optionally, update the current blog
+      })
+      .addCase(editBlogById.rejected, (state, action) => {
+        state.loading = false;  // Set loading to false after failure
+        state.error = action.payload;  // Set the error message
       });
   },
 });
