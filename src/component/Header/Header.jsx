@@ -1,12 +1,15 @@
 import './Header.css';
 import { MdDelete } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
-import { deleteUser } from '../../features/auth/authSlice';
+import { deleteUser} from '../../features/auth/authSlice';
 import { useState } from 'react';
+import { logout } from '../../features/auth/authSlice';
 // import { useSelector } from 'react-redux';
 import { getUserBlogs, postBlog } from '../../features/blogs/blogSlice';
 
+import { useNavigate } from 'react-router-dom';
 const Header = () => {
+  const navigate=useNavigate();
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -89,6 +92,10 @@ const handleSubmit = async (e) => {
   }
 };
 
+const handleLogout=()=>{
+  dispatch(logout())
+  navigate('/');
+}
 
   return (
     <nav>
@@ -96,6 +103,7 @@ const handleSubmit = async (e) => {
       <ul>
         <MdDelete onClick={handleDeleteUser} />
         <button onClick={handleToggleModal}>Add post</button>
+        <button onClick={handleLogout}>Logout</button>
       </ul>
 
       {/* Modal */}
