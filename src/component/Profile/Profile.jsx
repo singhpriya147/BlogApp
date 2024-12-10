@@ -42,26 +42,28 @@ const Profile = () => {
   };
 
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
 
-     
-      if (user) {
-        try {
-         dispatch(updateProfile());
 
-          alert('Profile updated successfully!');
-          setIsModalOpen(false); // Close the modal
-          dispatch(getDetail()); // Refresh the profile
-        } catch (error) {
-          console.error('Error updating profile:', error);
-          alert('Failed to update profile. Please try again.');
+
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (user) {
+          try {
+            await dispatch(updateProfile( formData));
+
+            alert('Profile updated successfully!');
+            setIsModalOpen(false); 
+            dispatch(getDetail()); 
+          } catch (error) {
+            console.error('Error updating profile:', error);
+            alert('Failed to update profile. Please try again.');
+          }
+        } else {
+          alert('Please login to update your profile.');
         }
-      } else {
-        alert('Please login to update your profile.');
-      }
-    };
-
+      };
 
      const toggleModal = () => {
        setIsModalOpen(!isModalOpen);
